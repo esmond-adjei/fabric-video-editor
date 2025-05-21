@@ -14,19 +14,23 @@ export const Element = observer((props: ElementProps) => {
   const { element } = props;
   const Icon = element.type === "video" ? MdMovie : MdOutlineTextFields;
   const isSelected = store.selectedElement?.id === element.id;
-  const bgColor = isSelected ? "rgba(0, 160, 245, 0.1)" : "";
+  
   return (
     <div
-      style={{
-        backgroundColor: bgColor,
-      }}
-      className={`flex mx-2 my-1 py-2 px-1 flex-row justify-start items-center ${bgColor}`}
+      className={`flex my-1 p-2 flex-row justify-start items-center rounded-md cursor-pointer transition-colors ${
+        isSelected 
+          ? "bg-primary-100 dark:bg-primary-900/30 border border-primary-300 dark:border-primary-700" 
+          : "hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-transparent"
+      }`}
       key={element.id}
       onClick={() => {
         store.setSelectedElement(element);
       }}
     >
-      <Icon size="20" color="gray"></Icon>
+      <Icon 
+        size="20" 
+        className={isSelected ? "text-primary-600 dark:text-primary-400" : "text-zinc-500 dark:text-zinc-400"} 
+      />
       <div className="truncate text-xs ml-2 flex-1 font-medium">
         {element.name}
       </div>

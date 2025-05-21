@@ -7,11 +7,10 @@ import { Element } from "../entity/Element";
 export const ElementsPanel = observer((_props: {}) => {
   const store = React.useContext(StoreContext);
   return (
-    <div className="bg-slate-200 h-full overflow-scroll">
-      <div className="flex flex-row justify-between">
-        <div className="text-sm px-[16px] py-[7px] font-semibold">Elements</div>
-      </div>
-      <div className="flex flex-col">
+    <div className="h-full w-[200px] bg-zinc-800 border-r border-border flex flex-col items-center p-2">
+      <h3 className="text-sm px-4 py-3 font-medium">Elements</h3>
+      
+      <div className="flex flex-col p-2">
         {store.editorElements.map((element) => {
           return <Element key={element.id} element={element} />;
         })}

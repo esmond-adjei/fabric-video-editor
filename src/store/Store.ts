@@ -30,6 +30,12 @@ export class Store {
   possibleVideoFormats: string[] = ['mp4', 'webm'];
   selectedVideoFormat: 'mp4' | 'webm';
 
+  // sidebarExpanded, toggleSidebar, activeToolPanel, setActiveToolPanel
+  sidebarExpanded: boolean;
+  activeToolPanel: string | null;
+  // toggleSidebar: () => void;
+  // setActiveToolPanel: (panel: string | null) => void;
+
   constructor() {
     this.canvas = null;
     this.videos = [];
@@ -46,7 +52,23 @@ export class Store {
     this.animationTimeLine = anime.timeline();
     this.selectedMenuOption = 'Video';
     this.selectedVideoFormat = 'mp4';
+
+    this.sidebarExpanded = true;
+    this.activeToolPanel = null;
+
     makeAutoObservable(this);
+  }
+
+  get toggleSidebar() {
+    return () => {
+      this.sidebarExpanded = !this.sidebarExpanded;
+    }
+  }
+
+  get setActiveToolPanel() {
+    return (panel: string | null) => {
+      this.activeToolPanel = panel;
+    }
   }
 
   get currentTimeInMs() {

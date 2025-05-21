@@ -8,22 +8,148 @@ body {
 }
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary: rgb(37, 99, 235);
+  --primary-hover: #2563eb;
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 60px;
+  --timeline-height: 160px;
+  --radius: 0.625rem;
+  
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(15, 23, 42);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(15, 23, 42);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(15, 23, 42);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(241, 245, 249);
+  --secondary-foreground: rgb(37, 99, 235);
+  --muted: 241, 245, 249;
+  --muted-foreground: 100, 116, 139;
+  --accent: 241, 245, 249;
+  --accent-foreground: 37, 99, 235;
+  --destructive: 239, 68, 68;
+  --border: 226, 232, 240;
+  --input: 226, 232, 240;
+  --ring: 59, 130, 246;
+  
+  --chart-1: 249, 115, 22;
+  --chart-2: 6, 182, 212;
+  --chart-3: 59, 130, 246;
+  --chart-4: 250, 204, 21;
+  --chart-5: 234, 88, 12;
+  --sidebar: 255, 255, 255;
+  --sidebar-foreground: 15, 23, 42;
+  --sidebar-primary: 37, 99, 235;
+  --sidebar-primary-foreground: 255, 255, 255;
+  --sidebar-accent: 241, 245, 249;
+  --sidebar-accent-foreground: 37, 99, 235;
+  --sidebar-border: 226, 232, 240;
+  --sidebar-ring: 59, 130, 246;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
+/* Dark mode styles using class-based approach for NextJS 13.4.9 */
+.dark {
+  --background: 9, 9, 11;
+  --foreground: 255, 255, 255;
+  --card: 30, 41, 59;
+  --card-foreground: 255, 255, 255;
+  --popover: 30, 41, 59;
+  --popover-foreground: 255, 255, 255;
+  --primary: 96, 165, 250;
+  --primary-foreground: 15, 23, 42;
+  --secondary: 51, 65, 85;
+  --secondary-foreground: 255, 255, 255;
+  --muted: 51, 65, 85;
+  --muted-foreground: 148, 163, 184;
+  --accent: 51, 65, 85;
+  --accent-foreground: 255, 255, 255;
+  --destructive: 248, 113, 113;
+  --border: 71, 85, 105;
+  --input: 71, 85, 105;
+  --ring: 96, 165, 250;
+  
+  /* Sidebar specific variables */
+  --sidebar: rgb(30, 41, 59);
+  --sidebar-foreground: rgb(255, 255, 255);
+  --sidebar-primary: rgb(96, 165, 250);
+  --sidebar-primary-foreground: rgb(15, 23, 42);
+  --sidebar-accent: rgb(51, 65, 85);
+  --sidebar-accent-foreground: rgb(255, 255, 255);
+  --sidebar-border: rgb(71, 85, 105);
+  --sidebar-ring: rgb(96, 165, 250);
+}
+
+/* Standard radius classes */
+.radius-sm { border-radius: calc(var(--radius) - 4px); }
+.radius-md { border-radius: calc(var(--radius) - 2px); }
+.radius-lg { border-radius: var(--radius); }
+.radius-xl { border-radius: calc(var(--radius) + 4px); }
+
+/* Font classes */
+.font-sans { font-family: var(--font-geist-sans, ui-sans-serif, system-ui, sans-serif); }
+.font-mono { font-family: var(--font-geist-mono, ui-monospace, monospace); }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
       transparent,
       rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* Custom resizable styles */
+.resizer {
+  background-color: rgb(var(--border-color));
+  z-index: 1;
+  width: 4px;
+  cursor: col-resize;
+  transition: background-color 0.2s;
+}
+
+.resizer:hover, .resizing {
+  background-color: rgb(var(--accent-color));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border-color));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-color));
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b3b3b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b4b4b;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3b3b3b #1a1a1a;
 }

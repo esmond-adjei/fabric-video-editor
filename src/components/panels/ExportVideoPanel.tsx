@@ -61,7 +61,7 @@ export const ExportVideoPanel = observer(() => {
       </div>
 
       <button
-        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-1 px-1 rounded-lg m-4"
+        className="bg-zinc-500 hover:bg-zinc-700 text-white font-bold py-1 px-1 rounded-lg m-4"
         onClick={() => {
           store.handleSeek(0);
           store.setSelectedElement(null);

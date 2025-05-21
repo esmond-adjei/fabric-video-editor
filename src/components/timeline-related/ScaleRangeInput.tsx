@@ -72,21 +72,19 @@ export const ScaleRangeInput: React.FC<ScaleRangeInputProps> = (props) => {
             refIsMouseDown.current = false;
         }}
     >
-        <canvas
-            height={props.height}
-            ref={ref}></canvas>
+        <canvas height={props.height} ref={ref} />
         <div
-            className="rounded-full bg-black w-[4px] absolute top-0 left-0"
+            className="rounded-full bg-primary-600 w-[4px] absolute top-0 left-0"
             style={{
                 height: `${props.height}px`,
                 transform: `translateX(${value / max * canvasSize.width}px) translateX(-2px)`
             }}
         >
-
         </div>
-
     </div>;
-}; export type ScaleRangeInputProps = {
+};
+
+export type ScaleRangeInputProps = {
     max: number;
     value: number;
     markings: Marking[];
@@ -94,11 +92,10 @@ export const ScaleRangeInput: React.FC<ScaleRangeInputProps> = (props) => {
     height: number;
     backgroundColor: string;
 };
+
 export type Marking = {
     interval: number;
     color: string;
     size: number;
     width: number;
-
 };
-

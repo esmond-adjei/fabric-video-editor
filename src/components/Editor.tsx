@@ -4,12 +4,14 @@ import { fabric } from "fabric";
 import React, { useEffect, useState } from "react";
 import { StoreContext } from "@/store";
 import { observer } from "mobx-react";
-import { Resources } from "./Resources";
 import { ElementsPanel } from "./panels/ElementsPanel";
 import { Menu } from "./Menu";
 import { TimeLine } from "./TimeLine";
 import { Store } from "@/store/Store";
+import { Clapperboard } from 'lucide-react';
+import { useTheme } from "./theme/ThemeProvider";
 import "@/utils/fabric-utils";
+import Link from "next/link";
 
 export const EditorWithStore = () => {
   const [store] = useState(new Store());
@@ -22,18 +24,20 @@ export const EditorWithStore = () => {
 
 export const Editor = observer(() => {
   const store = React.useContext(StoreContext);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = new fabric.Canvas("canvas", {
       height: 500,
       width: 800,
-      backgroundColor: "#ededed",
+      backgroundColor: theme === 'dark' ? "#374151" : "#f1f5f9",
     });
     fabric.Object.prototype.transparentCorners = false;
-    fabric.Object.prototype.cornerColor = "#00a0f5";
+    fabric.Object.prototype.cornerColor = "#2563eb";
     fabric.Object.prototype.cornerStyle = "circle";
-    fabric.Object.prototype.cornerStrokeColor = "#0063d8";
+    fabric.Object.prototype.cornerStrokeColor = "#1d4ed8";
     fabric.Object.prototype.cornerSize = 10;
+    
     // canvas mouse down without target should deselect active object
     canvas.on("mouse:down", function (e) {
       if (!e.target) {
@@ -46,28 +50,37 @@ export const Editor = observer(() => {
       canvas.renderAll();
       fabric.util.requestAnimFrame(render);
     });
-  }, []);
+  }, [store, theme]);
+  
   return (
-    <div className="grid grid-rows-[500px_1fr_20px] grid-cols-[72px_300px_1fr_250px] h-[100svh]">
+    <div className="flex h-screen text-white editor-theme">
+      <Menu />
 
-      <div className="tile row-span-2 flex flex-col">
-        <Menu />
-      </div>
-      <div className="row-span-2 flex flex-col overflow-scroll">
-        <Resources />
-      </div>
-      <div id="grid-canvas-container" className="col-start-3 bg-slate-100 flex justify-center items-center">
-        <canvas id="canvas" className="h-[500px] w-[800px] row" />
-      </div>
-      <div className="col-start-4 row-start-1">
+      <main className="flex flex-col flex-1 h-full overflow-hidden">
+        <header className="h-14 bg-background border-b border-border flex items-center justify-between p-4 z-10">
+          <Link href="/" className="text-xl font-bold text-blue-500 flex items-center gap-2">
+            <Clapperboard /> ChyllCut
+          </Link>
+          
+          <div className="text-muted">start creating</div>
+        </header>
+
+        <div className="canvas-editor overflow-hidden flex justify-center items-center bg-background">
+          {/* <div
+            id="grid-canvas-container"
+            className="col-start-3 bg-[rgb(var(--canvas-bg))] flex justify-center items-center shadow-inner"
+          >
+          </div> */}
+          <canvas id="canvas" className="h-[500px] w-[800px] row shadow-lg" />
+        </div>
+        
+        <div className="timeline bg-background/95 border-t border-border">
+          <TimeLine />
+        </div>
+    </main>
+      <div className="elements border-l border-border">
         <ElementsPanel />
       </div>
-      <div className="col-start-3 row-start-2 col-span-2 relative px-[10px] py-[4px] overflow-scroll">
-        <TimeLine />
-      </div>
-      <div className="col-span-4 text-right px-2 text-[0.5em] bg-black text-white">
-        Crafted By Amit Digga
-      </div>
-    </div>
+  </div>
   );
 });
