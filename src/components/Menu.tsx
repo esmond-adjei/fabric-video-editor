@@ -34,8 +34,8 @@ export const Menu = observer(() => {
               className={cn(
                 "h-[72px] w-[72px] rounded-lg flex flex-col items-center justify-center transition-colors",
                 isSelected 
-                  ? "bg-primary-600 text-white" 
-                  : "hover:bg-primary-50 dark:hover:bg-primary-900/30"
+                  ? "bg-primary text-primary-foreground" // Use theme variables
+                  : "hover:bg-secondary dark:hover:bg-secondary" // Use theme variables
               )}
             >
               <button
@@ -47,16 +47,16 @@ export const Menu = observer(() => {
                   size="24"
                   className={cn(
                     isSelected 
-                      ? "text-white" 
-                      : "text-zinc-600 dark:text-zinc-300"
+                      ? "text-primary-foreground" // Use theme variable
+                      : "text-foreground/80" // Use theme variable
                   )}
                 />
                 <div
                   className={cn(
                     "mt-1 text-xs font-medium",
                     isSelected 
-                      ? "text-white" 
-                      : "text-zinc-600 dark:text-zinc-400"
+                      ? "text-primary-foreground" // Use theme variable
+                      : "text-muted-foreground" // Use theme variable
                   )}
                 >
                   {option.name}
@@ -84,7 +84,7 @@ export const Menu = observer(() => {
       <button
         onClick={store.toggleSidebar}
         className={cn(
-          "absolute top-1/2 -right-2 -translate-y-1/2 z-10 p-1 opacity-0 group-hover:opacity-100 rounded-full bg-zinc-800 border border-border cursor-pointer hover:shadow-lg hover:bg-zinc-700 text-zinc-400 transition-all duration-300",
+          "absolute top-1/2 -right-2 -translate-y-1/2 z-10 p-1 opacity-0 group-hover:opacity-100 rounded-full bg-popover border border-border cursor-pointer hover:shadow-lg hover:bg-accent text-popover-foreground transition-all duration-300", // Use theme variables
         )}
         title={store.sidebarExpanded ? "Collapse panel" : "Expand panel"}
       >

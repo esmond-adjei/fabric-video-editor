@@ -36,7 +36,7 @@ export const AnimationsPanel = observer(() => {
       </div>
       {selectedElement && !hasFadeInAnimation ? (
         <div
-          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-slate-700 hover:text-white cursor-pointer"
+          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer" // Use theme variables
           onClick={() => {
             store.addAnimation({
               id: getUid(),
@@ -52,7 +52,7 @@ export const AnimationsPanel = observer(() => {
       ) : null}
       {selectedElement && !hasFadeOutAnimation ? (
         <div
-          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-slate-700 hover:text-white cursor-pointer"
+          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer" // Use theme variables
           onClick={() => {
             store.addAnimation({
               id: getUid(),
@@ -68,7 +68,7 @@ export const AnimationsPanel = observer(() => {
       ) : null}
       {selectedElement && !hasSlideInAnimation ? (
         <div
-          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-slate-700 hover:text-white cursor-pointer"
+          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer" // Use theme variables
           onClick={() => {
             store.addAnimation({
               id: getUid(),
@@ -88,7 +88,7 @@ export const AnimationsPanel = observer(() => {
       ) : null}
       {selectedElement && !hasSlideOutAnimation ? (
         <div
-          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-slate-700 hover:text-white cursor-pointer"
+          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer" // Use theme variables
           onClick={() => {
             store.addAnimation({
               id: getUid(),
@@ -108,7 +108,7 @@ export const AnimationsPanel = observer(() => {
       ) : null}
       {selectedElement && !hasConsantAnimation ? (
         <div
-          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-slate-700 hover:text-white cursor-pointer"
+          className="text-sm px-[16px] py-[8px] font-semibold hover:bg-accent hover:text-accent-foreground cursor-pointer" // Use theme variables
           onClick={() => {
             store.addAnimation({
               id: getUid(),

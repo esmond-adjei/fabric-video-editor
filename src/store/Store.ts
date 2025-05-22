@@ -24,6 +24,9 @@ export class Store {
   animationTimeLine: anime.AnimeTimelineInstance;
   playing: boolean;
 
+  canvasWidth: number;
+  canvasHeight: number;
+
   currentKeyFrame: number;
   fps: number;
 
@@ -53,6 +56,9 @@ export class Store {
     this.selectedMenuOption = 'Video';
     this.selectedVideoFormat = 'mp4';
 
+    this.canvasWidth = 800;
+    this.canvasHeight = 500;
+
     this.sidebarExpanded = true;
     this.activeToolPanel = null;
 
@@ -77,6 +83,14 @@ export class Store {
 
   setCurrentTimeInMs(time: number) {
     this.currentKeyFrame = Math.floor(time / 1000 * this.fps);
+  }
+
+  setCanvasWidth(width: number) {
+    this.canvasWidth = width;
+  }
+
+  setCanvasHeight(height: number) {
+    this.canvasHeight = height;
   }
 
   setSelectedMenuOption(selectedMenuOption: MenuOption) {

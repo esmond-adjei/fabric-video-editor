@@ -19,7 +19,7 @@ export const ImageResourcesPanel = observer(() => {
       </div>
       <UploadButton
         accept="image/*"
-        className="bg-zinc-300 hover:bg-zinc-400 text-zinc-800 font-bold text-center mx-2 py-2 px-4 rounded cursor-pointer"
+        className="bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-center mx-2 py-2 px-4 rounded cursor-pointer" // Use theme variables
         onChange={handleFileChange}
       />
       <div >

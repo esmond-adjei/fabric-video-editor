@@ -7,7 +7,7 @@ import { Element } from "../entity/Element";
 export const ElementsPanel = observer((_props: {}) => {
   const store = React.useContext(StoreContext);
   return (
-    <div className="h-full w-[200px] bg-zinc-800 border-r border-border flex flex-col items-center p-2">
+    <div className="h-full w-[200px] bg-popover border-r border-border flex flex-col items-center p-2"> {/* Use theme variable */}
       <h3 className="text-sm px-4 py-3 font-medium">Elements</h3>
       
       <div className="flex flex-col p-2">

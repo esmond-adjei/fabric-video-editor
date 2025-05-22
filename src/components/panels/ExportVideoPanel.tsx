@@ -17,7 +17,7 @@ export const ExportVideoPanel = observer(() => {
           <div className="text-xs font-semibold mr-2">Video Length:</div>
           <input
             type="number"
-            className="rounded text-center border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 max-w-[50px] mr-2"
+            className="rounded text-center border-border placeholder-muted-foreground max-w-[50px] mr-2 bg-transparent" // Use theme variables and add bg-transparent
             value={store.maxTime / 1000}
             onChange={(e) => {
               const value = e.target.value;
@@ -61,7 +61,7 @@ export const ExportVideoPanel = observer(() => {
       </div>
 
       <button
-        className="bg-zinc-500 hover:bg-zinc-700 text-white font-bold py-1 px-1 rounded-lg m-4"
+        className="bg-primary hover:bg-primary-hover text-primary-foreground font-bold py-1 px-1 rounded-lg m-4" // Use theme variables
         onClick={() => {
           store.handleSeek(0);
           store.setSelectedElement(null);
