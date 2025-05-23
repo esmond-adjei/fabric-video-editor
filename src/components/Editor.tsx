@@ -65,7 +65,7 @@ export const Editor = observer(() => {
           <div className="text-muted">start creating</div>
         </header>
 
-        <div className="canvas-editor overflow-hidden flex justify-center items-center bg-background">
+        <div className="canvas-editor flex-1 overflow-hidden flex justify-center items-center bg-background">
           {/* <div
             id="grid-canvas-container"
             className="col-start-3 bg-[rgb(var(--canvas-bg))] flex justify-center items-center shadow-inner"
